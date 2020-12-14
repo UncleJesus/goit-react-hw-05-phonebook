@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styles from '../ContactForm/ContactForm.module.css';
+import React, { Component } from "react";
+import styles from "../ContactForm/ContactForm.module.css";
 
 class ContactForm extends Component {
   state = {
-    name: '',
-    number: '',
+    name: "",
+    number: "",
   };
 
   handleChange = ({ target }) => {
@@ -12,10 +12,10 @@ class ContactForm extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.addContact(this.state.name, this.state.number);
-    this.setState({ name: '', number: '' });
+    this.setState({ name: "", number: "" });
   };
 
   render() {
@@ -41,7 +41,11 @@ class ContactForm extends Component {
               className={styles.input}
             />
           </label>
-          <button type="submit" className={styles.btn}>
+          <button
+            type="submit"
+            disabled={!name.length || !number.length}
+            className={styles.btn}
+          >
             Add contact
           </button>
         </form>
