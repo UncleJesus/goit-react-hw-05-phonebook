@@ -82,36 +82,34 @@ class App extends Component {
     const visibleContacts = this.handleFilter(contacts, filter);
     return (
       <>
-        <div>
-          <CSSTransition
-            in={true}
-            appear={true}
-            classNames={styles}
-            timeout={500}
-            unmountOnExit
-          >
-            <h1>Phonebook</h1>
-          </CSSTransition>
-          <ContactForm addContact={this.addContact} />
-          <h2>Contacts</h2>
-          {contacts.length > 1 && (
-            <Filter handleChange={this.handleChange} filter={filter} />
-          )}
+        <CSSTransition
+          in={true}
+          appear={true}
+          classNames={styles}
+          timeout={500}
+          unmountOnExit
+        >
+          <h1>Phonebook</h1>
+        </CSSTransition>
+        <ContactForm addContact={this.addContact} />
+        <h2>Contacts</h2>
+        {contacts.length > 1 && (
+          <Filter handleChange={this.handleChange} filter={filter} />
+        )}
 
-          <ContactList
-            visibleContacts={visibleContacts}
-            handleDelete={this.handleDelete}
-          />
+        <ContactList
+          visibleContacts={visibleContacts}
+          handleDelete={this.handleDelete}
+        />
 
-          <CSSTransition
-            in={isExists}
-            timeout={250}
-            classNames={notificationStyles}
-            unmountOnExit
-          >
-            <Notification message="This name is already in your contacts" />
-          </CSSTransition>
-        </div>
+        <CSSTransition
+          in={isExists}
+          timeout={250}
+          classNames={notificationStyles}
+          unmountOnExit
+        >
+          <Notification message="This name is already in your contacts" />
+        </CSSTransition>
       </>
     );
   }
